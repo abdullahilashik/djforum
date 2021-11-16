@@ -1,4 +1,5 @@
 {% load static %}
+<!doctype html>
 <html class="no-js " lang="en">
 <head>
     <meta charset="utf-8">
@@ -6,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
-    <title>{% if title %} {{ title }} {% endif %}</title>
+    <title>:: Alpino Horizontal :: Project</title>
     <!-- Favicon-->
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
@@ -61,8 +62,9 @@
             <li>
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="h-bars"></a>
-                    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'assets/images/logo-black.svg' %}" width="35"
-                                                                   alt="Alpino"><span class="m-l-10">Alpino</span></a>
+                    <a class="navbar-brand" href="{% url 'forums:question-list' %}"><img
+                            src="{% static 'assets/images/logo-black.svg' %}" width="35" alt="Alpino"><span
+                            class="m-l-10">Alpino</span></a>
                 </div>
             </li>
             <li class="search_bar">
@@ -100,7 +102,7 @@
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar5.jpg" alt="">
+                                        <img class="media-object" src="{% static 'assets/images/xs/avatar5.jpg' %}" alt="">
                                         <div class="media-body">
                                             <span class="name">Alexander <span class="time">13min ago</span></span>
                                             <span class="message">Meeting with Shawn at Stark Tower by 8 o'clock.</span>
@@ -111,7 +113,7 @@
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar6.jpg" alt="">
+                                        <img class="media-object" src="{% static 'assets/images/xs/avatar6.jpg' %}" alt="">
                                         <div class="media-body">
                                             <span class="name">Grayson <span class="time">22min ago</span></span>
                                             <span class="message">You have 5 unread emails in your inbox.</span>
@@ -122,7 +124,7 @@
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar3.jpg" alt="">
+                                        <img class="media-object" src="{% static 'assets/images/xs/avatar3.jpg' %}" alt="">
                                         <div class="media-body">
                                             <span class="name">Sophia <span class="time">31min ago</span></span>
                                             <span class="message">OrderPlaced: You received a new oder from Tina.</span>
@@ -133,7 +135,7 @@
                             <li>
                                 <a href="javascript:void(0);">
                                     <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar4.jpg" alt="">
+                                        <img class="media-object" src="{% static 'assets/images/xs/avatar4.jpg' %}" alt="">
                                         <div class="media-body">
                                             <span class="name">Isabella <span class="time">35min ago</span></span>
                                             <span class="message">Lara added a comment in Blazing Saddles.</span>
@@ -227,7 +229,7 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="h-menu">
-                    <li><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>
+                    <li><a href="{% url 'forums:question-list' %}"><i class="zmdi zmdi-home"></i></a></li>
                     <li><a href="javascript:void(0)">Apps</a>
                         <ul class="sub-menu">
                             <li><a href="mail-inbox.html">Inbox</a></li>
@@ -347,9 +349,9 @@
                         <ul class="sub-menu sm-mega-menu">
                             <li>
                                 <ul>
-                                    <li class="active"><a href="blank.html">Blank Page</a></li>
+                                    <li><a href="blank.html">Blank Page</a></li>
                                     <li><a href="teams-board.html">Teams Board</a></li>
-                                    <li><a href="projects.html">Projects List</a></li>
+                                    <li class="active"><a href="projects.html">Projects List</a></li>
                                     <li><a href="image-gallery.html">Image Gallery</a></li>
                                     <li><a href="profile.html">Profile</a></li>
                                     <li><a href="timeline.html">Timeline</a></li>
@@ -553,9 +555,7 @@
 
 <!-- Main Content -->
 <section class="content">
-    <div class="container">
-        {% block main %} {% endblock %}
-    </div>
+    {% block main %} {% endblock %}
 </section>
 <!-- Jquery Core Js -->
 <script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script> <!-- Lib Scripts Plugin Js -->
