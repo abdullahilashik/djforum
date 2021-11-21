@@ -24,31 +24,32 @@
                             <table class="table m-b-0 table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Status</th>
-                                    <th>Question</th>
-                                    <th>Topic</th>
-                                    <th>Owner</th>
+                                    <th>Title</th>
+                                    <th>User</th>
+                                    <th>Questions</th>
+                                    {#                                    <th>Created</th>#}
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for question in questions %}
+                                {% for topic in topics %}
                                     <tr>
                                         <td>
-                                            <span class="badge badge-{{ question.status }}">{{ question.get_status_display }}</span>
+                                            <span>{{ topic.title }}</span>
                                         </td>
                                         <td class="project-title">
-                                            <h6><a href="#">{{ question.title }}</a></h6>
-                                            <small>Created {{ question.created | date }}</small>
+                                            <h6><a href="#">{{ topic.user }}</a></h6>
+                                            <small>Created {{ topic.created | date }}</small>
                                         </td>
                                         <td>
-                                            {{ question.topic }}
+                                            <span class="badge badge-{% if topic.question_set.all %}success{% else %}danger{% endif %}">{{ topic.question_set.all | length }} Questions</span>
                                         </td>
-                                        <td>
-                                            {{ question.user }}
-                                        </td>
+                                        {#                                        <td>#}
+                                        {#                                            {{ question.user }}#}
+                                        {#                                        </td>#}
                                         <td class="project-actions">
-                                            <a href="{% url 'forums:question-slug' question.slug %}" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
+                                            <a href="{% url 'forums:question-list' topic.slug %}"
+                                               class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
                                             <a href="#" class="btn btn-neutral btn-sm"><i
                                                     class="zmdi zmdi-edit"></i></a>
                                         </td>
