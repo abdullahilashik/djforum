@@ -4,16 +4,17 @@
     <div class="container">
         <div class="block-header">
             <div class="row clearfix">
-                {#                <div class="col-lg-5 col-md-5 col-sm-12">#}
-                {#                    <h2>Latest Forum Questions</h2>#}
-                {#                </div>#}
-                {#                <div class="col-lg-7 col-md-7 col-sm-12">#}
-                {#                    <ul class="breadcrumb float-md-right padding-0">#}
-                {#                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>#}
-                {#                        <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>#}
-                {#                        <li class="breadcrumb-item active">Projects List</li>#}
-                {#                    </ul>#}
-                {#                </div>#}
+                                <div class="col-lg-5 col-md-5 col-sm-12">
+{#                                    <h2>Latest Forum Questions</h2>#}
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-12">
+                                    <a href="{% url 'forums:topic-create' %}" class="btn btn-sm btn-warning float-right">Create New Topic</a>
+{#                                    <ul class="breadcrumb float-md-right padding-0">#}
+{#                                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>#}
+{#                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>#}
+{#                                        <li class="breadcrumb-item active">Projects List</li>#}
+{#                                    </ul>#}
+                                </div>
             </div>
         </div>
         <div class="row clearfix">
@@ -50,8 +51,8 @@
                                         <td class="project-actions">
                                             <a href="{% url 'forums:question-list' topic.slug %}"
                                                class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i
-                                                    class="zmdi zmdi-edit"></i></a>
+                                            <a href="{% url 'forums:topic-delete' topic.id %}" class="btn btn-neutral btn-sm"><i
+                                                    class="zmdi zmdi-delete"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

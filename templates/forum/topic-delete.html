@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <div class="container">
+        <div class="block-header">
+            <div class="row clearfix">
+                                <div class="col-lg-5 col-md-5 col-sm-12">
+{#                                    <h2>Latest Forum Questions</h2>#}
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-12">
+                                    <a href="{% url 'forums:topic-list' %}" class="btn btn-sm btn-warning float-right"><i class="fc-icon fc-icon-left-double-arrow"></i>Go Back</a>
+{#                                    <ul class="breadcrumb float-md-right padding-0">#}
+{#                                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>#}
+{#                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>#}
+{#                                        <li class="breadcrumb-item active">Projects List</li>#}
+{#                                    </ul>#}
+                                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="body project_report">
+                        <h5>Are you sure you want to delete <em>{{ topic.title }}</em>?</h5>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-danger">DELETE</button>
+                            <a class="btn btn-success" href="{% url 'forums:topic-list' %}">Nah, go back!</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

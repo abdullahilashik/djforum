@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from .models import Question, Topic
 from django.views import generic
+from .forms import TopicForm
 
 
 class QuestionListView(generic.ListView):
@@ -24,3 +25,21 @@ class TopicListview(generic.ListView):
     template_name = 'forum/topic-list.html'
     queryset = Topic.objects.all()
     context_object_name = 'topics'
+
+
+class TopicCreateView(generic.CreateView):
+    template_name = 'forum/topic-create.html'
+    queryset = Topic.objects.all()
+    form_class = TopicForm
+
+    def get_success_url(self):
+        return reverse('forums:topic-list')
+
+
+class TopicDeleteView(generic.DeleteView):
+    template_name = 'forum/topic-delete.html'
+    queryset = Topic.objects.all()
+    context_object_name = 'topic'
+
+    def get_success_url(self):
+        return reverse('forums:topic-list')
