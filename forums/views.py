@@ -35,6 +35,9 @@ class TopicCreateView(generic.CreateView):
     def get_success_url(self):
         return reverse('forums:topic-list')
 
+    def form_valid(self, form):
+        return super().form_valid(form)
+
 
 class TopicDeleteView(generic.DeleteView):
     template_name = 'forum/topic-delete.html'
